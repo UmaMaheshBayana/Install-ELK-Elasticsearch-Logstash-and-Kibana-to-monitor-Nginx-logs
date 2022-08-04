@@ -182,4 +182,80 @@ sudo systemctl status kibana
 ````
 After start the kibana, Open chrome and type ```localhost:5601``` (here kibana server run on port 5601) 
 
+# Step 3: Install Logstash And Configure Nginx Server To Check Nginx Server Logs
+
+***Install Logstash***
+```
+sudo apt-get update && sudo apt-get install logstash
+````
+***Install Nginx***
+```
+sudo apt-get install nginx
+````
+
+# Step 4: Configure Nginx Logs in Logstash
+
+Go to below mentioned path and create nginx.conf file and save.
+
+```
+cd /etc/logstash/conf.d
+````
+```
+sudo nano nginx.conf
+````
+Here the ```nginx.conf``` file past the belwo mentioned lines.
+
+```
+input {
+    file {
+        path => ["/var/log/nginx/access.log", "/var/log/nginx/error.log"]
+        type => "nginx"
+}
+
+}
+
+filter {
+ grok {
+   match => [ "message" , "%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}"]
+   overwrite => [ "message" ]
+ }
+ mutate {
+   convert => ["response", "integer"]
+   convert => ["bytes", "integer"]
+   convert => ["responsetime", "float"]
+ }
+ geoip {
+   source => "clientip"
+   target => "geoip"
+   add_tag => [ "nginx-geoip" ]
+ }
+ date {
+   match => [ "timestamp" , "dd/MMM/YYYY:HH:mm:ss Z" ]
+   remove_field => [ "timestamp" ]
+ }
+ useragent {
+   source => "agent"
+ }
+}
+
+output {
+ elasticsearch {
+   hosts => ["127.0.0.1:9200"]
+  index => "nginx-%{+YYYY.MM.dd}"
+   document_type => "nginx_logs"
+ }
+ }
+
+```
+
+# Step 5: Start the logstash to fetch nginx logs to Elasticssearch and Kibana
+
+
+
+
+
+
+
+
+
 
