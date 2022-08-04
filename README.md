@@ -250,6 +250,16 @@ output {
 
 # Step 5: Start the logstash to fetch nginx logs to Elasticssearch and Kibana
 
+Go to the below mentioned path and start the logstash
+
+```
+cd /usr/share/logstash
+````
+
+```
+sudo bin/logstash -f /etc/logstash/conf.d/nginx.conf
+````
+
 
 
 
