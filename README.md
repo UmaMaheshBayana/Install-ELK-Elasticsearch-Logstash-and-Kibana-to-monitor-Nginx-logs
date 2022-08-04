@@ -1,8 +1,6 @@
 # Install ELK Elasticsearch Logstash and Kibana to monitor Nginx logs
 
-# Step-1 : ELASTIC-SEARCH
-
-# Steps to install ElasticSearch on Ubuntu 20.04 LTS
+# Step-1 : Steps to install ElasticSearch on Ubuntu 20.04 LTS
 
 **Install Java  – OpenJDK on Ubuntu 20.04**
 
@@ -125,7 +123,7 @@ sudo rm -rf /var/lib/elasticsearch/
 sudo rm -rf /etc/elasticsearch
 ````
 
-# Step 2: INSTALL KIBANA AND CONFIGURE ELASTICSEARCH IN LINUX UBUNTU
+# Step 2: Install Kibana And Configure Elasticsearch
 
 ***After Elasticsearch install please follow the below setps to install and configure KIBANA***
 
@@ -171,7 +169,7 @@ Here uncomment the below mentioned lines to change configurations
 
 after changing the configaution save the ```kibana.yml``` file
 
-Now enable the kibana and Start Kibana
+***Now enable the kibana and Start Kibana***
 
 ```
 sudo systemctl enable kibana
