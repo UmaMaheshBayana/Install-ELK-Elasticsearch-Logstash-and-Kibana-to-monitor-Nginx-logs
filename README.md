@@ -1,5 +1,19 @@
 # Install ELK Elasticsearch Logstash and Kibana to monitor Nginx logs
 
+# Introducing ELK Stack
+
+ELK is a collection of three open-source applications - Elasticsearch, Logstash, and Kibana from Elastic that accepts data from any source or format, on which you can then perform search, analysis, and visualize that data.
+
+**1)	Elasticsearch —** Elasticsearch stores and indexes the data. It is a NoSQL database based on Lucene's open-source search engine. Since Elasticsearch is developed using Java, therefore, it can run on different platforms. One particular aspect where it excels is indexing streams of data such as logs.
+
+**2)	Logstash —** Logstash is a tool that integrates with a variety of deployments. It is used to collect, parse, transform, and buffer data from a variety of sources. The data collected by Logstash can be shipped to one or more targets like Elasticsearch.
+
+**3)	Kibana —** Kibana acts as an analytics and visualization layer on top of Elasticsearch. Kibana can be used to search, view, and interpret the data stored in Elasticsearch.
+
+
+
+
+
 # Step-1 : Steps to install ElasticSearch on Ubuntu 20.04 LTS
 
 **Install Java  – OpenJDK on Ubuntu 20.04**
